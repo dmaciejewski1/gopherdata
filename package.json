@@ -5,11 +5,13 @@
   Develop and execute canned or dynamic DDL/DML statements that are stored within library files (in json format)
   executed from a Node.js configured environment against an Oracle backend.",
   "author": {
-    "name": "David Maciejewski"
+    "name": "David Maciejewski",
+    "email": "dmaciejewski1@gmail.com"
   },
+  "main" : "app.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/dmaciejewski1/gopherdata.git"
   },
   "license": "MIT",
   "keywords": ["data", "database", "Db", "DB", "db", "layer", "node", "warehouse", "information",
