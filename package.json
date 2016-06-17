@@ -1,0 +1,36 @@
+{
+  "name": "gopherdata",
+  "version": "0.0.0",
+  "description": "Develop, Maintain, Organize, and Send your recycled database statements from outside of an Oracle Database.
+  Develop and execute canned or dynamic DDL/DML statements that are stored within library files (in json format)
+  executed from a Node.js configured environment against an Oracle backend.",
+  "author": {
+    "name": "David Maciejewski"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "keywords": ["data", "database", "Db", "DB", "db", "layer", "node", "warehouse", "information",
+    "transaction", "metrics", "connect", "connection", "connectivity", "business", "mine","mining","SQL", "PLSQL",
+    "PL/SQL", "select", "insert", "statements", "query", "queries", "querying", "clauses", "ETL", "client",
+    "add-on","API", "web-API", "webAPI", "plugin", "plug-in", "tool", "driver", "library", "module", "oracledb",
+    "oracle-gopher", "oracle","ora", "OCI", "10g", "11g","12c"
+    ],
+  "dependencies": {
+    "formattor": "0.0.2",
+    "oracledb": "^1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.28 <=5.6.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
