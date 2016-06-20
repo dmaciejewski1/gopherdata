@@ -21,69 +21,74 @@ Build and Configure Gophers to:
 * Oracle Instant Client
 
 ## Oracle Instant Client Setup
-#### *A) Download*
-1. Download the following **TWO** Oracle Instant Client Packages (here: http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html ). Please make sure to download the correct packages for your system architecture (i.e. 64 bit vs 32 bit)
+#### A. *Download*
+   1. Download the following **TWO** Oracle Instant Client Packages (here: http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html ). Please make sure to download the correct packages for your system architecture (i.e. 64 bit vs 32 bit)
+      * **Instant Client Package - Basic or Basic Lite**: Contains files required to run OCI, OCCI, and JDBC-OCI applications
+      * **Instant Client Package - SDK**: Contains additional header files and an example makefile for developing Oracle applications with Instant Client
 
-    * **Instant Client Package - Basic or Basic Lite**: Contains files required to run OCI, OCCI, and JDBC-OCI applications
+#### B. *Install* (this example procedure is for Mac OS X 64bit ONLY)
+   1. Locate Oracle Instant Client files and unzip to directory: ```~/oracle```
 
-    * **Instant Client Package - SDK**: Contains additional header files and an example makefile for developing Oracle applications with Instant Client
+   ```
+   unzip instantclient-basic-macos.x64-11.2.0.4.0.zip -d ~/oracle
+   unzip instantclient-sdk-macos.x64-11.2.0.3.0.zip -d ~/oracle
+   ```
+   2. Update your .bashrc file by appending and saving the following block of code:
 
-#### *B) Install (this example procedure is for Mac OS X 64bit ONLY)*
+   ```
+   ##### Oracle Instant Client 11.2 #####
+    export OCI_HOME=~/oracle/instantclient_11_2
+    export OCI_LIB_DIR=~/oracle/lib
+    export OCI_INC_DIR=$OCI_HOME/sdk/include
+    export OCI_INCLUDE_DIR=$OCI_HOME/sdk/include
+    export OCI_VERSION=11
+    export DYLD_LIBRARY_PATH=$OCI_LIB_DIR
+   ```
+   3. Create the following symbolic links from within your Instant Client directory (e.g. /oracle/instantclient_11_2):
 
-1. Locate Oracle Instant Client files and unzip to directory: ```~/oracle```
-```
-unzip instantclient-basic-macos.x64-11.2.0.4.0.zip -d ~/oracle
-unzip instantclient-sdk-macos.x64-11.2.0.3.0.zip -d ~/oracle
-```
-2. Update your .bashrc file by appending and saving the following block of code:
-```
-##### Oracle Instant Client 11.2 #####
- export OCI_HOME=~/oracle/instantclient_11_2
- export OCI_LIB_DIR=~/oracle/lib
- export OCI_INC_DIR=$OCI_HOME/sdk/include
- export OCI_INCLUDE_DIR=$OCI_HOME/sdk/include
- export OCI_VERSION=11
- export DYLD_LIBRARY_PATH=$OCI_LIB_DIR
-```
-3. Create the following symbolic links from within your Instant Client directory (e.g. /oracle/instantclient_11_2):
-```
-cd /oracle/instantclient_11_2
-ln -s libclntsh.dylib.11.1 libclntsh.dylib
-ln -s libocci.dylib.11.1 libocci.dylib
-```
-4. Restart your Terminal application OR type the following ```source ~/.bashrc```
+   ```
+   cd /oracle/instantclient_11_2
+   ln -s libclntsh.dylib.11.1 libclntsh.dylib
+   ln -s libocci.dylib.11.1 libocci.dylib
+   ```
+   4. Restart your Terminal application OR type the following ```source ~/.bashrc```
 
 ## Create a Simple Demo Application called "gopher-demo"
 This will set up a basic model for operation  (Use to create gopher development patterns)
+#### *A. Setup and Configure*
+   1. Initialize gopher-demo with npm:
 
-#### *A) Setup and Configure*
-
-1. Initialize gopher-demo with npm:
-```
+   ```
 npm init
-```
-2. After gopher-demo initialization is complete, install the gopherdata module using npm:
-```
+   ```
+   2. After gopher-demo initialization is complete, install the gopherdata module using npm:
+
+   ```
 npm install gopherdata
-```
-3. From the gopher-demo main directory, create directories named "libraries/connection" from the main gopher-demo directory:
-```
+   ```
+   3. From the gopher-demo main directory, create directories named "libraries/connection" from the main gopher-demo directory:
+
+   ```
 mkdir -p libraries/connection
-```
-4. From the gopher-demo main directory, create a directory in "libraries" named "libraries/transaction":
-```
+   ```
+   4. From the gopher-demo main directory, create a directory in "libraries" named "libraries/transaction":
+
+   ```
 mkdir libraries/transaction
-```
-5. From the gopher-demo main directory, create a connection library (file) named finance-connections.json:
-```
+   ```
+   5. From the gopher-demo main directory, create a connection library (file) named finance-connections.json:
+
+   ```
 touch libraries/connection/finance-connections.json
-```
-6. From the gopher-demo main directory, create a transaction library (file) named oracle-dictionary-transactions.json:
-```
+   ```
+   6. From the gopher-demo main directory, create a transaction library (file) named oracle-dictionary-transactions.json:
+
+   ```
 touch libraries/transaction/oracle-dictionary-transactions.json
-```
-7. **CONFIGURE A CONNECTION LIBRARY** : Add the following code to libraries/connection/finance-connections.json and save:
-```json
+   ```
+   7. **CONFIGURE A CONNECTION LIBRARY** : Add the following code to libraries/connection/finance-connections.json and save:
+
+   ```json
 [
   {"finance-Prod" :{
         "user"                 : "me",
@@ -100,9 +105,10 @@ touch libraries/transaction/oracle-dictionary-transactions.json
         "SID"                  : "financedatabases.arecooltoo.com"
   }}
 ]
-```
-8. **CONFIGURE A TRANSACTION LIBRARY**: In this example, db-Tables and db-Columns are the names of the Transactions a gopher can retrieve and send from this particular library. Add the following code to libraries/transaction/oracle-dictionary-transactions.json and save:
-```json
+   ```
+   8. **CONFIGURE A TRANSACTION LIBRARY**: In this example, db-Tables and db-Columns are the names of the Transactions a gopher can retrieve and send from this particular library. Add the following code to libraries/transaction/oracle-dictionary-transactions.json and save:
+
+   ```json
 [
   {"db-Tables" :{
     "dbStatement"     : "SELECT a.object_name AS \"TABLE\" FROM sys.user_objects a INNER JOIN sys.user_all_tables b ON a.object_name = b.table_name WHERE a.object_type = 'TABLE' ORDER BY b.table_name",
@@ -115,9 +121,10 @@ touch libraries/transaction/oracle-dictionary-transactions.json
 
   }}
 ]
-```
-9. Add Transaction Libraries to Connections in the libraries/connection/finance-connections.json file *(uses only some of the example configuration above)*:
-```json
+   ```
+   9. Add Transaction Libraries to Connections in the libraries/connection/finance-connections.json file *(uses only some of the example configuration above)*:
+
+   ```json
 [
   {"finance-Prod" :{
         "user"                 : "me",
@@ -139,9 +146,9 @@ touch libraries/transaction/oracle-dictionary-transactions.json
                                   "./libraries/transaction/myfinanceSandbox-transactions.json"]
   }}
 ]
-```
+   ```
 
-#### *B) Build a Gopher*
+#### *B. Build a Gopher*
 Create a simple gopher that uses a stored transaction named "db-Tables" (found in the oracle-dictionary-transactions.json transaction library) to get a list of all tables names from the Finance Production Database (whose connection info can be found in the finance-connections.json connection library as "finance-Prod") *(uses only some of the example configuration above).*
 1. From the gopher-demo main directory, create a gopher.js file:
 ```
