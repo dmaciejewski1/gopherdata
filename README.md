@@ -24,10 +24,10 @@ Build and Configure Gophers to:
 |Jump to a section...|
 |:-----------|
 |[Oracle Instant Client Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#oracle-instant-client-setup)|
-|[Setup and Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#setup-and-configure)|
-|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#build-a-gopher)|
-|[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-a-gopher-schema)|
-|[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-some-gopher-calls)|
+|[Setup and Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-setup-and-configure)|
+|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-build-a-gopher)|
+|[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#i-create-a-gopher-schema)|
+|[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#ii-create-some-gopher-calls)|
 
 
 ## Oracle Instant Client Setup
