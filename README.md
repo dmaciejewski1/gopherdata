@@ -20,13 +20,26 @@ Build and Configure Gophers to:
 * Node.js (works with v0.10.28 through v6.2.2)
 * Oracle Instant Client (works with v11.2 through v12.1)
 
+## Contents
+|Jump to a section...|
+|:-----------|
+|[Oracle Instant Client Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#oracle-instant-client-setup)|
+|[Setup and Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#setup-and-configure)|
+|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#build-a-gopher)|
+|[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-a-gopher-schema)|
+|[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-some-gopher-calls)|
+
+
 ## Oracle Instant Client Setup
-#### A. *Download*
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
+### A. Download
    1. Download the following **TWO** Oracle Instant Client Packages (here: http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html ). Make sure to download the correct packages for your system architecture (i.e. 64 bit vs 32 bit)
       * **Instant Client Package - Basic or Basic Lite**: Contains files required to run OCI, OCCI, and JDBC-OCI applications
       * **Instant Client Package - SDK**: Contains additional header files and an example makefile for developing Oracle applications with Instant Client
 
-#### B. *Install* (this demo procedure is for Mac OS X 64bit ONLY using Oracle Instant Client 12.1)
+### B. Install
+##### (this demo procedure is for Mac OS X 64bit ONLY using Oracle Instant Client 12.1)
    1. Unzip your Oracle Instant Client files to ```~/oracle```
 
    ```bash
@@ -51,9 +64,11 @@ Build and Configure Gophers to:
    ```
    4. Restart your Terminal application OR type the following ```source ~/.bashrc```
 
-## Create a Simple (non-functional) Demo Application called "gopher-demo"
-This will set up a basic model for operation  (Use to create gopher development patterns)
-#### *A. Setup and Configure*
+## Create a Simple Demo Application
+ This will set up a basic (non-functional) model for operation called "gopher-demo" (Use to create gopher development patterns)
+### A. Setup and Configure
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
    1. Initialize gopher-demo with npm:
 
    ```bash
@@ -146,7 +161,9 @@ touch libraries/transaction/oracle-dictionary-transactions.json
 ]
    ```
 
-#### *B. Build a Gopher*
+### B. Build a Gopher
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
 Create a simple Gopher that uses a stored transaction named "get-Tables" (found in the oracle-dictionary-transactions.json transaction library) to get a list of all tables names from the Finance Production Database (whose connection info can be found in the finance-connections.json connection library as "finance-Prod") *(this non-functional demo uses only some of the example configuration above)*.
 
 1. From the gopher-demo main directory, create a gopher.js file:
@@ -194,8 +211,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
    );
  ```
 
-#### *C) Build a simple abstraction*
-##### I. Create a Gopher schema
+### C. Build a simple abstraction
+#### I. Create a Gopher schema
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
  Create a gopher-schema.js file and load it up with links to your connection libraries, and then build/configure your transaction types
  1. From the gopher-demo main directory, create a gopher-schema.js file:
  ```bash
@@ -331,7 +350,9 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
      }
 ```
 
-##### II. Create some example gopher calls:
+#### II. Create some gopher calls:
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
  1. From the gopher-demo main directory, create a myGopherCalls.js file:
  ```bash
 
