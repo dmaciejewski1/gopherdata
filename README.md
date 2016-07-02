@@ -1,20 +1,16 @@
 # gopher
-Develop, Organize and Execute database statements from within a Node.js environment against an Oracle Database
+Develop and organize your canned database statements and queries (within a Node.js platform) so that can be executed against any one (or all) of your Oracle Database environments from your own centralized libraries.
 
 ## Summary
-Maintain and execute canned or dynamic DDL/DML statements that are stored within library files (in json format)
-executed from a Node.js configured environment against an Oracle backend. Gopher helps keep track of Database
-Connection and Transaction/SQL configurations while giving you handy data output options, and valuable feedback
-about the process.
+Access stored database transactions/SQL queries and run them against multiple Oracle databases from your own centralized library files (stored in json format). Gopher helps keep track of your Database *Connection* and *Transaction* configurations while giving you data formatting options, and feedback about the process.
 
 ## Usage
 Build and Configure Gophers to:
-* access and retrieve information from your locally stored Connection and Transaction libraries
-* facilitate connections with databases
-* send and retrieve database transactions
-* configure and serve data and metadata output
-* abstract away details about database connections and transactions
-* integrate with web-API development and/or with other Node.js modules (such as Express.js)
+* facilitate *Connections* and *Transactions* with Oracle databases
+* organize and maintain *Connection* and *Transaction* information in (json) library files
+* abstract away details about information requests
+* maintain SQL queries from outside Oracle
+* integrate the Gopher framework with web-API development and/or with other Node.js modules (such as Express.js)
 
 ## Requirements
 * Node.js (works with v0.10.28 through v6.2.2)
@@ -24,8 +20,9 @@ Build and Configure Gophers to:
 |Jump to a section...|
 |:-----------|
 |[Oracle Instant Client Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#oracle-instant-client-setup)|
-|[Setup and Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-setup-and-configure)|
-|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-build-a-gopher)|
+|[Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-setup)|
+|[Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-configure)|
+|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#c-build-a-gopher)|
 |[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#i-create-a-gopher-schema)|
 |[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#ii-create-some-gopher-calls)|
 
@@ -64,8 +61,8 @@ Build and Configure Gophers to:
    4. Restart your Terminal application OR type the following ```source ~/.bashrc```
 
 ## Create a Simple Demo Application
- This will set up a basic (non-functional) model for operation called "gopher-demo" (Use to create gopher development patterns)
-### A. Setup and Configure
+ This will set up a basic (non-functional) model called "gopher-demo" (Use to create gopher development patterns)
+### A. Setup
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
    1. Initialize gopher-demo with npm:
@@ -78,27 +75,31 @@ npm init
    ```bash
 npm install gopherdata
    ```
-   3. From the gopher-demo main directory, create directories named "libraries/connection" from the main gopher-demo directory:
+   3. From the main directory, create directories named "libraries/connection":
 
    ```bash
 mkdir -p libraries/connection
    ```
-   4. From the gopher-demo main directory, create a directory in "libraries" named "libraries/transaction":
+   4. From the main directory, create a directory in "libraries" named "libraries/transaction":
 
    ```bash
 mkdir libraries/transaction
    ```
-   5. From the gopher-demo main directory, create a connection library (file) named finance-connections.json:
+   5. From the main directory, create a *Connection Library* (file) named finance-connections.json:
 
    ```bash
 touch libraries/connection/finance-connections.json
    ```
-   6. From the gopher-demo main directory, create a transaction library (file) named oracle-dictionary-transactions.json:
+   6. From the main directory, create a *Transaction Library* (file) named oracle-dictionary-transactions.json:
 
    ```bash
 touch libraries/transaction/oracle-dictionary-transactions.json
    ```
-   7. **CONFIGURE A CONNECTION LIBRARY** : Add the following code to libraries/connection/finance-connections.json and save:
+
+### B. Configure
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---   
+   1. **CONFIGURE A CONNECTION LIBRARY** : In the example below "finance-Prod" and "finance-Dev" are the name of database *Connections*. Add the following code to ```./libraries/connection/finance-connections.json``` and save:
 
    ```json
 [
@@ -118,7 +119,7 @@ touch libraries/transaction/oracle-dictionary-transactions.json
   }}
 ]
    ```
-   8. **CONFIGURE A TRANSACTION LIBRARY**: Here, "get-Tables" and "get-Columns" are canned Transactions with configurable default properties. A gopher can easily be instructed/configured to execute a specific Transaction against a specific Connection. Add the following code to libraries/transaction/oracle-dictionary-transactions.json and save:
+   2. **CONFIGURE A TRANSACTION LIBRARY**: In the example below, "get-Tables" and "get-Columns" are *Transactions* with configurable default properties. A gopher will be instructed/configured to execute a specific *Transaction* using a specific *Connection*. Add the following code to ```./libraries/transaction/oracle-dictionary-transactions.json``` and save:
 
    ```json
 [
@@ -134,7 +135,7 @@ touch libraries/transaction/oracle-dictionary-transactions.json
   }}
 ]
    ```
-   9. **ASSOCIATE TRANSACTION LIBRARIES TO SPECIFIC CONNECTIONS**: Here, Transaction Libraries are linked to specific Connections so, where necessary, commonly used transactions can be shared across multiple database environments. In this example the "transactionLibraries" Property has been set from within the libraries/connection/finance-connections.json file. *(this non-functional demo uses only some of the example configuration above)*:
+   3. **ASSOCIATE TRANSACTION LIBRARIES TO SPECIFIC CONNECTIONS**: In the example below, *Transaction Libraries* are linked to specific *Connections* so when necessary, commonly used *Transactions* can be shared with multiple database *Connections* (from a single *Transaction Library*). In this example (found in ```./libraries/connection/finance-connections.json```), the "transactionLibraries" Property for the finance-Prod and finance-Dev *Connections* have both been set to use *Transactions* from the ```./libraries/transaction/oracle-dictionary-transactions.json``` library:
 
    ```json
 [
@@ -145,7 +146,8 @@ touch libraries/transaction/oracle-dictionary-transactions.json
         "port"                 : 12345,
         "service"              : "databases.arecool.com",
         "transactionLibraries" : ["./libraries/transaction/oracle-dictionary-transactions.json",
-                                  "./libraries/transaction/finance-production-transactions.json"]
+                                  "./libraries/transaction/finance-reports-2015.json",
+                                  "./libraries/transaction/finance-web-application.json"]
   }},
   {"finance-Dev" :{
         "user"                 : "me",
@@ -154,16 +156,18 @@ touch libraries/transaction/oracle-dictionary-transactions.json
         "port"                 : 12345,
         "SID"                  : "financedatabases.arecooltoo.com",
         "transactionLibraries" : ["./libraries/transaction/oracle-dictionary-transactions.json",
-                                  "./libraries/transaction/finance-development-transactions.json",
-                                  "./libraries/transaction/myfinanceSandbox-transactions.json"]
+                                  "./libraries/transaction/financeSandbox.json",
+                                  "./libraries/transaction/finance-reports-2016-DEV.json",
+                                  "./libraries/transaction/finance-reports-2015.json",
+                                  "./libraries/transaction/finance-web-application.json"]
   }}
 ]
    ```
 
-### B. Build a Gopher
+### C. Build a Gopher
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
-Create a simple Gopher that uses a stored transaction named "get-Tables" (found in the oracle-dictionary-transactions.json transaction library) to get a list of all tables names from the Finance Production Database (whose connection info can be found in the finance-connections.json connection library as "finance-Prod") *(this non-functional demo uses only some of the example configuration above)*.
+Create a simple Gopher that uses the same stored *Transaction* against two different databases (from the same common library) to get lists of all tables listed in the Finance Production and Finance Development Databases.
 
 1. From the gopher-demo main directory, create a gopher.js file:
  ```bash
@@ -186,10 +190,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
    var runGopher = function(dbConnection,transactionName,callback){
 
      // Add Transaction Properties here:
-     let transactionObject = {transaction : transactionName};
+     let transactionPlan = {transaction : transactionName};
 
      new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-       .run(transactionObject,
+       .run(transactionPlan,
          function(err,res){
            if (err)  {
              return callback(err,res);
@@ -202,19 +206,29 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
                              Send Gopher on it's way
 ********************************************************************************/
 
+  //get a production db table listing
    runGopher('finance-Prod','get-Tables',
      function(gophErr, gophRes){
        if(gophErr){console.log(gophRes);}
      console.log(gophRes)
      }
    );
+
+   //get a development db table listing
+   runGopher('finance-Dev','get-Tables',
+     function(gophErr, gophRes){
+       if(gophErr){console.log(gophRes);}
+     console.log(gophRes)
+     }
+   );
+
  ```
 
-### C. Build a simple abstraction
+### D. Build a simple abstraction
 #### I. Create a Gopher schema
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
- Create a gopher-schema.js file and load it up with links to your connection libraries, and then build/configure your transaction types
+ Create a gopher-schema.js file and add links to your *Connection Libraries*, and then build/configure your *Transaction* types
  1. From the gopher-demo main directory, create a gopher-schema.js file:
  ```bash
 
@@ -228,8 +242,8 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
   //Assign Gardens (Gopher vernacular for Db Connection Configurations)
   const GARDENS = ['./libraries/connection/myDatabase-connections.json',
-                       './libraries/connection/corporate-connections.json',
-                       './libraries/connection/finance-connections.json'];
+                   './libraries/connection/corporate-connections.json',
+                   './libraries/connection/finance-connections.json'];
 /*******************************************************************************
     Create Different Gophers (i.e. a Gopher Schema) and Configure their     
     Transaction Properties                                                  
@@ -237,10 +251,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
    //--------------------Without Bind Variables--------------------
     exports.run = function(dbConnection,transactionName,callback){
-      let transactionObject = {transaction : transactionName};
+      let transactionPlan = {transaction : transactionName};
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err)  {return callback(err,res);}
             return callback(err,res);
@@ -252,13 +266,13 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
     exports.runWBindVariables = function(dbConnection,transactionName,bindVariables,callback){
 
-      let transactionObject = {
+      let transactionPlan = {
         transaction        : transactionName,
         bindVariables      : bindVariables
       };
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err)  {return callback(err,res);}
             return callback(err,res);
@@ -270,13 +284,13 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
     exports.showSql = function(dbConnection,transactionName,callback){
 
-      let transactionObject = {
+      let transactionPlan = {
         transaction        : transactionName,
         responseOutput     : ['sqlOnly']
       };
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err) {return callback(err,res);}
             return callback(err,res);
@@ -288,13 +302,13 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
     exports.runVerbose = function(dbConnection,transactionName,callback){
 
-      let transactionObject = {
+      let transactionPlan = {
         transaction        : transactionName,
         responseOutput     : ['verbose']
       };
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err) {return callback(err,res);}
             return callback(err,res);
@@ -306,10 +320,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
     exports.getTables = function(dbConnection,callback){
 
-      let transactionObject = {transaction  : 'get-Tables'};
+      let transactionPlan = {transaction  : 'get-Tables'};
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err) {return callback(err,res);}
             return callback(err,res);
@@ -321,13 +335,13 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
     exports.getColumns = function(dbConnection,table,callback){
 
-      let transactionObject = {
+      let transactionPlan = {
         transaction    : 'get-Columns',
         bindVariables  : {tableName:table}
       };
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err)  {return callback(err,res);}
             return callback(err,res);
@@ -337,10 +351,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
 
    //--------------------------Modifiable--------------------------
 
-    exports.runModifiable = function(dbConnection,transactionObject,callback){
+    exports.runModifiable = function(dbConnection,transactionPlan,callback){
 
       new Gopher({"connection":dbConnection,"connectionLibraries":GARDENS})
-        .run(transactionObject,
+        .run(transactionPlan,
           function(err,res){
             if (err) {return callback(err,res);}
             return callback(err,res);
@@ -368,10 +382,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
      transactionPlan = {}; // a means by which to override a stored Transaction's default settings
 
  ```     
- 3. **Basic Run** : append the "run" Gopher to myGopherCalls.js to execute a stored Transaction against a stored Database connection (provided the named Transaction is configured to work with the named Connection...SEE the Connection Library. Note: Make sure the "transactionLibraries" property is set/formatted properly)
+ 3. **Basic Run** : Append the "run" gopher to myGopherCalls.js to execute a stored *Transaction* using a stored database *Connection*
  ```js
 
-     connection = 'myDatabase-Prod';
+     connection = 'finance-Dev';
      transaction = 'get-Tables';
 
      gopher.run(connection,transaction,
@@ -381,7 +395,7 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
        }
      );
  ```
- 4. **With Bind Variables** : append the "runWBindVariables" Gopher to myGopherCalls.js to allow bind variables to be used with transactions and returns just the data
+ 4. **Run With Bind Variables** : Append the "runWBindVariables" gopher to myGopherCalls.js to allow bind variables to be used with *Transactions* and returns just the data
  ```js
 
      connection = 'finance-Prod';
@@ -400,11 +414,17 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
        }
      );
  ```
- 5. **View SQL Statement** : append the "showSql" Gopher to myGopherCalls.js to return just the SQL Statement sent to generate the quarterly report (without the data)
+ 5. **View SQL Statement** : Append the "showSql" gopher to myGopherCalls.js to return just the actual SQL statement sent to generate the quarterly report (without the data)
  ```js
 
      connection = 'finance-Prod';
      transaction = 'get-quarterly-report';
+     bindVariables = {
+       region     : 'North America',
+       division   : 'Sales',
+       storeID    : '1234'
+
+     };     
 
      gopher.showSql(connection,transaction,
        function(gophErr, gophRes){
@@ -413,10 +433,10 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
        }
      );
  ```
- 6. **Show List of Database Table Names** : append the "getTables" Gopher to myGopherCalls.js to return just the Database tables of a given connection
+ 6. **Show List of Database Table Names** : Append the "getTables" gopher to myGopherCalls.js, for use as a generic/simplified gopher that returns the Database tables with just a *Connection* (forgoing the need to callout the canned *Transaction* by name "get-Tables")
  ```js
 
-     connection = 'myDatabase-Prod';
+     connection = 'finance-Prod';
 
      gopher.getTables(connection,
        function(gophErr, gophRes){
@@ -425,11 +445,11 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
        }
      );
  ```
- 7. **Show List of Table Column Names** : append the "getColumns" Gopher to myGopherCalls.js to return  given connection
+ 7. **Show List of Table Column Names** : Append the "getColumns" gopher to myGopherCalls.js to return  given *Connection*
  ```js
 
-     connection = 'myDatabase-Prod';
-     var table = 'quarterly_report';
+     connection = 'finance-Prod';
+     var table = 'quarterly_metrics';
 
      gopher.getColumns(connection,table,
        function(gophErr, gophRes){
@@ -438,20 +458,33 @@ Create a simple Gopher that uses a stored transaction named "get-Tables" (found 
        }
      );
  ```
- 8. **Run Transaction as Modifiable** : append the "runModifiable" Gopher to myGopherCalls.js to override a Transaction's defaults
+ 8. **Return All Available Information** : Append the "runVerbose" gopher to myGopherCalls.js to return all available information about the *Transaction*; that is, information regarding the: host machine, network, connection, database statement, errors, database response, metadata, and some simple metrics. To set specific outputs, configure the "responseOutput" property in the "transactionPlan" object below (see example 9).
  ```js
 
-     connection = 'myDatabase-Prod';
+     connection = 'finance-Prod';
+     transaction = 'get-Tables';
+
+     gopher.runVerbose(connection,transaction,
+       function(gophErr, gophRes){
+         if(gophErr){console.log(gophRes);}
+         console.log(gophRes)
+       }
+     );
+ ```
+ 9. **Run Transaction as Modifiable** : Append the "runModifiable" gopher to myGopherCalls.js to override a Transaction's defaults. In the example below, the *Transaction Plan* contains all possible properties
+ ```js
+
+     connection = 'finance-Prod';
      transactionPlan = {
          transaction       :'quarterly-report'
         ,bindVariables     :{ region     : 'North America',
                               division   : 'Sales',
                               storeID    : '1234'}
-        ,outputFormat      : 'object'
-        ,maxRowsReturned   : 3000
-        ,zeroRowMessage    : 'This quarterly report was not found.'
-        ,responseOutput    : ['host','network','connection','dbStatement','error','dbResponse','metaData','metrics']
-        ,timeZone          : 'local'
+        ,outputFormat      : 'object' // format used for the database output. choices are "array", "object", or "json". if not set/configured, the application default is "json"
+        ,maxRowsReturned   : 3000 // the number of rows returned from database output. if or not set/configured, the application default is 2000
+        ,zeroRowMessage    : 'No information found for North America Region' // the message returned when nothing is returned. if not set/configured, the application default is "0 rows returned"
+        ,responseOutput    : ['host','network','connection','dbStatement','error','dbResponse','metaData','metrics'] // use any of the following choices, or use only one of the following special commands: "dataOnly", "verbose". if not set/configured, the application default is "dataOnly"
+        ,timeZone          : 'local'// sets the time zone for timestamps returned in the response output information (this will NOT modify times/dates/timestamps within the dataset)
      };
 
      gopher.runModifiable(connectTo,transactionPlan,
