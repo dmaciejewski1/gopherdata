@@ -20,10 +20,10 @@ Develop and organize your recycled database statements and queries to be execute
 |Jump to a section|Section description|
 |:-----------|:-----------|
 |[Oracle Instant Client Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#oracle-instant-client-setup)| Get up and going with Oracle Instant Client|
-|[Gopher Concepts](http://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-a-simple-demo-application)|A quick reference guide|
-|[Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-setup)|Setup a basic demo app|
-|[Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-configure)|Configure some example libraries|
-|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#c-build-a-gopher)|Create a basic Gopher|
+|[Gopher Concepts](http://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-create-a-simple-demo-application)|A quick reference guide|
+|[Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-setup)|Setup a basic demo app|
+|[Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#c-configure)|Configure some example libraries|
+|[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#d-build-a-gopher)|Create a basic Gopher|
 |[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#i-create-a-gopher-schema)|Create a family of Gopher Types|
 |[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#ii-create-gopher-calls)|Put your Gophers to use|
 
@@ -64,7 +64,9 @@ Develop and organize your recycled database statements and queries to be execute
 ## Create a Simple Demo Application
  The following instruction has been written to help you set up a basic model for usage called "gopher-demo". Please note that (for simplicity sake) this demo is non-functional as it will not connect you to any real database. It is meant to cover core concepts for usage providing examples that demonstrate how to get started, and how to get the most from this software.
 
- Just a few concepts...As it pertains to this module:
+### A. Concepts
+#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
+---
   * A ***Connection*** is the name of a database's connection configuration (that is, the credentials necessary for connecting to a database)
   * A ***Transaction*** (or *gopher command*) is the name of a database statement (i.e. a DML or DDL string)
   * A ***Gopher*** is a function that is designed to:
@@ -73,7 +75,7 @@ Develop and organize your recycled database statements and queries to be execute
   * A ***Transaction Library*** is a JSON file that contains a group of named *Transactions* and their configurations.  
   * A ***Connection Library*** is a JSON file that contains a group of named *Connections* and their configurations
 
-### A. Setup
+### B. Setup
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
    1. Initialize gopher-demo with npm:
@@ -116,7 +118,7 @@ touch libraries/transaction/finance-reports-2016-DEV.json
 touch libraries/transaction/finance-reports-2016-ETL-DEV.json
    ```
 
-### B. Configure
+### C. Configure
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---   
    1. **CONFIGURE A CONNECTION LIBRARY** : In the example below "finance-Prod", "finance-QA" and "finance-Dev" are the name of database *Connections*. Add the following code to ```./libraries/connection/finance-connections.json```:
@@ -253,7 +255,7 @@ touch libraries/transaction/finance-reports-2016-ETL-DEV.json
 ]
    ```
 
-### C. Build a Gopher
+### D. Build a Gopher
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
 Create a simple Gopher that uses the same stored *Transaction* against two different databases (from the same common library) to get lists of all tables listed in the Finance Production and Finance Development Databases.
@@ -315,7 +317,7 @@ Create a simple Gopher that uses the same stored *Transaction* against two diffe
 
  ```
 
-### D. Build a Simple Abstraction
+### E. Build a Simple Abstraction
 #### I. Create a Gopher schema
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
