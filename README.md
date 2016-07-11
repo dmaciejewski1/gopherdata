@@ -114,6 +114,7 @@ touch libraries/transaction/oracle-dictionary.json
 touch libraries/transaction/finance-reports-2016-DEV.json
    ```   
    8. From the main directory, create an ETL *Transaction Library* named ***finance-reports-2016-ETL-DEV.json***:
+
    ```bash
 touch libraries/transaction/finance-reports-2016-ETL-DEV.json
    ```
