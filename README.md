@@ -26,7 +26,6 @@ Develop and organize your recycled database statements and queries to be execute
 |[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#c-build-a-gopher)|Create a basic Gopher|
 |[Create a Gopher Schema](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#i-create-a-gopher-schema)|Create a family of Gopher Types|
 |[Create Gopher Calls](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#ii-create-gopher-calls)|Put your Gophers to use|
-|[Usage Guidelines](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#e-usage-guidelines)|Some basic rules|
 
 ## Oracle Instant Client Setup
 #####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
@@ -63,7 +62,7 @@ Develop and organize your recycled database statements and queries to be execute
    4. Restart your Terminal application OR type the following ```source ~/.bashrc```
 
 ## Create a Simple Demo Application
- This will set up a basic (non-functional) model called "gopher-demo".
+ The following instruction has been written to help you set up a basic model for usage called "gopher-demo". Please note that (for simplicity sake) this demo is non-functional as it will not connect you to any real database. It is meant to cover core concepts for usage providing examples that demonstrate how to get started, and how to get the most from this software.
 
  Just a few concepts...As it pertains to this module:
   * A ***Connection*** is the name of a database's connection configuration (that is, the credentials necessary for connecting to a database)
@@ -584,6 +583,4 @@ Create a simple Gopher that uses the same stored *Transaction* against two diffe
        }
      );
    ```
-### E. Usage Guidelines
-#####[[back to top](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md)] [[back to contents](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#contents)]
 ---
