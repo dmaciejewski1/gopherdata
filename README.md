@@ -20,7 +20,7 @@ Develop and organize your recycled database statements and queries to be execute
 |Jump to a section|Section description|
 |:-----------|:-----------|
 |[Oracle Instant Client Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#oracle-instant-client-setup)| Get up and going with Oracle Instant Client|
-|[Gopher Concepts](http://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-a-demo-application)|A quick reference guide|
+|[Gopher Concepts](http://github.com/dmaciejewski1/gopherdata/blob/master/README.md#create-a-simple-demo-application)|A quick reference guide|
 |[Setup](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#a-setup)|Setup a basic demo app|
 |[Configure](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#b-configure)|Configure some example libraries|
 |[Build a Gopher](https://github.com/dmaciejewski1/gopherdata/blob/master/README.md#c-build-a-gopher)|Create a basic Gopher|
