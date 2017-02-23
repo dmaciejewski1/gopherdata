@@ -1,0 +1,10 @@
+[
+  { "testDb-Prod" :
+    {"user"       : "testUser",
+      "password"   : "testPassword",
+      "host"       : "test.db.com",
+      "port"       : 12345,
+      "service"    : "test.proddb.com",
+      "transactionLibraries": ["./test"]}
+  }
+]
