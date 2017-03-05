@@ -13,8 +13,8 @@ Develop and organize your recycled database statements and queries to be execute
 * integrate Gopher with task management tools/modules such as Grunt or Gulp
 
 ## Requirements
-* Node.js (works with v0.10.28 through v6.2.2)
-* Oracle Instant Client (works with v11.2 through v12.1)
+* Node.js (tested with v0.10.28 through v6.9.1)
+* Oracle Instant Client (tested with v11.2 through v12.1)
 
 ## Contents
 |Jump to a section|Section description|
