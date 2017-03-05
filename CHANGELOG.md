@@ -1,5 +1,12 @@
 # Change Log
 
+## gopherdata v0.1.1 (4 Mar 2017)
+
+- Changes ```gopher-connect```:
+
+  - Explicitly sets the oracle driver's auto-commit option to ```true```
+
+
 ## gopherdata v0.1.0 (4 Mar 2017)
 
 - Fixes crash found in ```gopher-response.js```:
