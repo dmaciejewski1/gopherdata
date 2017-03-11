@@ -1,5 +1,12 @@
 # Change Log
 
+## gopherdata v0.1.2 (10 Mar 2017)
+
+- Fixes crash found in ```gopher-connect```:
+
+  - The ```runTransaction``` function now will return a ORA-12514 db error without crashing
+
+
 ## gopherdata v0.1.1 (4 Mar 2017)
 
 - Changes ```gopher-connect```:
