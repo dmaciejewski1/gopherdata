@@ -1,47 +1,61 @@
 # Change Log
 
-## gopherdata v0.1.2 (10 Mar 2017)
 
-- Fixes crash found in ```gopher-connect```:
+## Gopher v0.1.3 (13 Mar 2017)
+
+- **Updates ```gopher-response```:**
+
+  - ```gopherResponse``` function now uses Promises
+
+  - ```gopherResponse``` is now an arrow function
+
+- **Updates ```gopher-connect```:**
+
+  - ```runTransaction``` function has been updated to receive Promises from ```gopherResponse``` function
+
+
+## Gopher v0.1.2 (10 Mar 2017)
+
+- **Fixes crash found in ```gopher-connect```:**
 
   - The ```runTransaction``` function now will return a ORA-12514 db error without crashing
 
 
-## gopherdata v0.1.1 (4 Mar 2017)
+## Gopher v0.1.1 (4 Mar 2017)
 
-- Changes ```gopher-connect```:
+- **Updates ```gopher-connect```:**
 
   - Explicitly sets the oracle driver's auto-commit option to ```true```
 
 
-## gopherdata v0.1.0 (4 Mar 2017)
+## Gopher v0.1.0 (4 Mar 2017)
 
-- Fixes crash found in ```gopher-response.js```:
+- **Fixes crash found in ```gopher-response.js```:**
 
   - Both ```dbStatement``` and ```metrics``` response views now handle an "undefined" response from the database
 
 
-- Changes ```gopher-response.js```:
+- **Changes ```gopher-response.js```:**
 
   - ```error``` message now reads ```error = false``` instead of ```error = {"message:":"No Error!"}```
 
   - ```network``` is removed from view until a fix can be implemented
 
 
-- Changes ```gopher.js```:
+- **Changes ```gopher.js```:**
 
   - To more accurately reflect it's function,```Gopher.query``` is now called using the following nomenclature:  ```Gopher.runStatement```
 
 
-- Adds ```CHANGELOG.md``` file
+- **Adds ```CHANGELOG.md``` file**
 
-- Updates ```README.md``` file
+- **Updates ```README.md``` file**
 
   - Minor changes
 
 
 
-## gopherdata v0.0.1 (23 Feb 2017 - initial release)
+## Gopher v0.0.1 (23 Feb 2017 - initial release)
 
 **Initial Features Include**:
 
