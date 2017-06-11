@@ -1,6 +1,6 @@
 {
   "name": "gopherdata",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Develop, Maintain, Organize, and Send your recycled database statements from outside of an Oracle Database. Develop and execute canned or dynamic DDL/DML statements that are stored within library files (in json format) executed from a Node.js configured environment against an Oracle backend.",
   "author": {
     "name": "David Maciejewski",
