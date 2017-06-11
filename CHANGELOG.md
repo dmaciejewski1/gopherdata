@@ -1,5 +1,10 @@
 # Change Log
 
+## Gopher v0.1.4 (11 June 2017)
+
+- **Updates ```gopher```:**
+
+  - ```Gopher.run``` function now uses Swap Values and will recognize a swapValues property with the Transaction Plan
 
 ## Gopher v0.1.3 (13 Mar 2017)
 
@@ -114,8 +119,3 @@
 - **gopher-time**
 
   - getDateObject (outputs a timestamp object with a variety of time outputs in both local and UTC time)
-
-
-
-
-
