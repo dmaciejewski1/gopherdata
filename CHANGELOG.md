@@ -1,5 +1,12 @@
 # Change Log
 
+## Gopher v0.2.0 (Development)
+
+- **Upgrading Gopher Module to ES6 code paradigm**
+
+- **Adding Transaction Time Out Feature**
+
+
 ## Gopher v0.1.4 (11 June 2017)
 
 - **Updates ```gopher```:**
